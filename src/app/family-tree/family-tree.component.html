@@ -1,0 +1,39 @@
+<div class="tree-container">
+    <!-- Render root members -->
+    <ng-container *ngFor="let rootMember of getMembersByParentId(undefined)">
+      <app-family-card
+        [member]="rootMember"
+        (addRelation)="openAddMemberPopup($event, rootMember.id)"
+      ></app-family-card>
+  
+      <!-- Render Parent Members -->
+      <div class="parent-container" *ngIf="getMembersByParentId(rootMember.id).length > 0">
+        <ng-container *ngFor="let parent of getMembersByParentId(rootMember.id)">
+          <app-family-card
+            [member]="parent"
+            (addRelation)="openAddMemberPopup($event, parent.id)"
+          ></app-family-card>
+        </ng-container>
+      </div>
+  
+      <!-- Render Descendent/Child Members -->
+      <div class="child-container" *ngIf="getMembersByParentId(rootMember.id).length > 0">
+        <ng-container *ngFor="let child of getMembersByParentId(rootMember.id)">
+          <app-family-card
+            [member]="child"
+            (addRelation)="openAddMemberPopup($event, child.id)"
+          ></app-family-card>
+        </ng-container>
+      </div>
+  
+      <!-- Render Sibling Members -->
+      <div class="siblings-container" *ngIf="getMembersByParentId(rootMember.parentId).length > 0">
+        <ng-container *ngFor="let sibling of getMembersByParentId(rootMember.parentId)">
+          <app-family-card
+            [member]="sibling"
+            (addRelation)="openAddMemberPopup($event, sibling.id)"
+          ></app-family-card>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>

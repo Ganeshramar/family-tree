@@ -1,0 +1,14 @@
+<div class="card" [ngStyle]="{ backgroundColor: getBackgroundColor() }">
+    <!-- Dynamic emoji based on relationship -->
+    <span class="emoji">{{ getEmoji() }}</span>
+  
+    <!-- Member details -->
+    <h4>{{ member.name }}</h4>
+    <p>Age: {{ member.age }}</p>
+    <p>Relationship: {{ member.relationship }}</p>
+  
+    <!-- Button to trigger "Add Relation" -->
+    <button mat-raised-button color="primary" (click)="addRelation.emit(member.relationship)">
+      Add Relation
+    </button>
+  </div>

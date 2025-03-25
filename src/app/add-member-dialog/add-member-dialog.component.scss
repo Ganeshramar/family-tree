@@ -1,0 +1,19 @@
+.dialog-container {
+    margin: 20px;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  
+  button {
+    width: 45%;
+  }
